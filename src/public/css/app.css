@@ -1,0 +1,23 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+    font-family: sans-serif;
+}
+
+.site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #000000;
+    color: #ffffff;
+    padding: 10px 20px;
+    text-align: left;
+}
+
+.site-header h1 {
+    margin: 0;
+    font-size: 20px;
+    letter-spacing: 1px;
+}

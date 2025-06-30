@@ -1,0 +1,46 @@
+.verify-body {
+    background-color: #ffffff;
+    text-align: center;
+    padding-top: 80px;
+    font-family: 'Noto Sans JP', sans-serif;
+}
+
+.verify-container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.verify-message {
+    font-size: 16px;
+    line-height: 2;
+    margin-bottom: 40px;
+    font-weight: bold;
+    color: #000;
+}
+
+.verify-button-wrapper {
+    margin-bottom: 20px;
+}
+
+.verify-button {
+    padding: 10px 30px;
+    font-size: 16px;
+    background-color: #e0e0e0;
+    border: 1px solid #444;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.verify-button:hover {
+    background-color: #d5d5d5;
+}
+
+.verify-resend-link a {
+    font-size: 14px;
+    color: #007BFF;
+    text-decoration: none;
+}
+
+.verify-resend-link a:hover {
+    text-decoration: underline;
+}
