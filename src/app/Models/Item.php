@@ -7,7 +7,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class Item extends Model
 {
+    
     use HasFactory;
+
+    protected $fillable = [
+        'user_id',
+        'name',
+        'description',
+        'price',
+        'image_path',
+        'is_sold',
+    ];
 
     public function user()
     {
@@ -38,5 +48,10 @@ class Item extends Model
     {
         return $this->hasMany(Review::class);
     }
+
+    public function likedUsers()
+{
+    return $this->belongsToMany(User::class, 'likes')->withTimestamps();
+}
 }
 

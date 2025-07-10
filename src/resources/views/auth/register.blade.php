@@ -1,8 +1,5 @@
-@extends('layouts.app')
-@section('styles')
+@extends('layouts.app') 
 <link rel="stylesheet" href="{{ asset('css/register.css') }}">
-@endsection
-
 @section('content')
 <div class="register-body">
     <div class="register-container">
@@ -13,8 +10,7 @@
 
             <div style="margin-bottom: 20px;">
                 <label>ユーザー名</label><br>
-                <input type="text" name="name" value="{{ old('name') }}" required autofocus>
-
+                <input type="text" name="name" value="{{ old('name') }}">
                 @error('name')
                     <div style="color: red;">{{ $message }}</div>
                 @enderror
@@ -22,8 +18,7 @@
 
             <div style="margin-bottom: 20px;">
                 <label>メールアドレス</label><br>
-                <input type="email" name="email" value="{{ old('email') }}" required>
-
+                <input type="email" name="email" value="{{ old('email') }}">
                 @error('email')
                     <div style="color: red;">{{ $message }}</div>
                 @enderror
@@ -31,8 +26,7 @@
 
             <div style="margin-bottom: 20px;">
                 <label>パスワード</label><br>
-                <input type="password" name="password" required>
-
+                <input type="password" name="password">
                 @error('password')
                     <div style="color: red;">{{ $message }}</div>
                 @enderror
@@ -40,7 +34,10 @@
 
             <div style="margin-bottom: 30px;">
                 <label>確認用パスワード</label><br>
-                <input type="password" name="password_confirmation" required>
+                <input type="password" name="password_confirmation">
+                @error('password_confirmation')
+                    <div style="color: red;">{{ $message }}</div>
+                @enderror
             </div>
 
             <div style="text-align: center;">
@@ -49,7 +46,7 @@
 
             <div class="link">
                 <a href="{{ route('login') }}">ログインはこちら</a>
-            </div>  
+            </div>
         </form>
     </div>
 </div>

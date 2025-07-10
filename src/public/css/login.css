@@ -1,0 +1,94 @@
+body {
+    background-color: #ffffff;
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+.login-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.login-container {
+    max-width: 400px;
+    width: 90%;
+    padding: 40px;
+    background-color: #fff;
+    text-align: left;
+}
+
+.login-container h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.center {
+    text-align: center;
+}
+
+button[type="submit"] {
+    background-color: #ff6b6b;
+    color: white;
+    padding: 12px 40px;
+    font-size: 14px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.register-link {
+    margin-top: 15px;
+}
+
+.register-link a {
+    color: #3f85e8;
+    font-size: 13px;
+}
+
+
+/* PC幅に合わせて調整（1400px〜） */
+@media screen and (min-width: 1400px) {
+    .login-container {
+        max-width: 500px;
+    }
+}
+
+/* タブレット対応（768px〜850px） */
+@media screen and (max-width: 850px) and (min-width: 768px) {
+    .login-container {
+        padding: 30px 25px;
+    }
+
+    .form-group input {
+        font-size: 16px;
+    }
+
+    button[type="submit"] {
+        font-size: 16px;
+        padding: 14px 45px;
+    }
+}

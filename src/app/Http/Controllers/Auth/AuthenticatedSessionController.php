@@ -1,0 +1,30 @@
+<?php
+
+namespace App\Http\Controllers\Auth;
+
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\LoginRequest;
+
+class AuthenticatedSessionController extends Controller
+{
+    public function store(LoginRequest $request)
+    {
+        // バリデーション済みのデータ取得
+        $credentials = $request->only('email', 'password');
+
+        if (Auth::attempt($credentials, $request->filled('remember'))) {
+            $request->session()->regenerate();
+
+            // 登録直後ならプロフィール編集へ
+            if (session('just_registered')) {
+                session()->forget('just_registered');
+                return redirect('/users/edit');
+            }
+
+            return redirect()->intended('/dashboard');
+        }
+
+    }
+}

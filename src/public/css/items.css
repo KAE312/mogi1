@@ -1,0 +1,81 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+    font-family: sans-serif;
+}
+
+.site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #000;
+    color: #fff;
+    padding: 10px 40px;
+    z-index: 1000;
+}
+
+main {
+    padding: 0 20px 20px 20px;
+    margin: 0;
+    display: block;
+    width: 100%;
+    max-width: none;
+
+}
+
+
+.items-container {
+    padding: 0 40px;
+    margin: 0;
+}
+
+/* タブメニュー */
+.tab-menu {
+    display: flex;
+    border-bottom: 1px solid #ccc;
+    margin: 20px 0;
+    padding-left: 0;
+}
+
+.tab-menu div {
+    margin-right: 20px;
+    padding-bottom: 5px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.tab-menu .active {
+    color: red;
+    border-bottom: 2px solid red;
+}
+
+/* 商品一覧（横並び・左揃え） */
+.item-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 30px;
+}
+
+/* 商品ボックス */
+.item-box {
+    text-align: center;
+    width: 150px;
+    /* 必須！幅がないと中央に1列表示になる */
+}
+
+.item-image {
+    width: 150px;
+    height: 150px;
+    background-color: #dcdcdc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+}

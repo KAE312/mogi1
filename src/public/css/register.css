@@ -46,3 +46,46 @@ body {
 .register-container .link a {
     color: #3f85e8;
 }
+
+
+/* タブレット対応（768px〜850px） */
+@media screen and (min-width: 768px) and (max-width: 850px) {
+    .register-container {
+        max-width: 90%;
+        padding: 0 20px;
+    }
+
+    .register-container h2 {
+        font-size: 18px;
+    }
+
+    .register-container input {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    .register-container button {
+        font-size: 14px;
+        padding: 10px 40px;
+    }
+}
+
+/*  PC対応（1400px〜1540px） */
+@media screen and (min-width: 1400px) and (max-width: 1540px) {
+    .register-container {
+        max-width: 600px;
+    }
+
+    .register-container h2 {
+        font-size: 22px;
+    }
+
+    .register-container input {
+        font-size: 15px;
+    }
+
+    .register-container button {
+        font-size: 15px;
+        padding: 12px 60px;
+    }
+}

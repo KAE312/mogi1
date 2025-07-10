@@ -3,6 +3,10 @@
 use Illuminate\Support\Facades\Route;
 use Laravel\Fortify\Http\Controllers\RegisteredUserController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\ItemsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,13 +23,43 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// 会員登録画面
+Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->middleware('guest')->name('register');
 
-Route::get('/register', [RegisteredUserController::class, 'create'])
-    ->middleware(['guest'])
-    ->name('register');
+//登録処理
+Route::post('/register', [RegisterController::class, 'register'])->middleware('guest');
 
-Route::middleware(['auth', 'verified'])->group(function () {
-    Route::get('/mypage', function () {
-      return view('mypage');
-    })->name('mypage');
+Route::get('/email/verify', function () {
+    return view('auth.verify-email');  
+})->name('verification.notice');
+
+Auth::routes(['verify' => true]);
+
+// 認証必須の画面
+Route::get('/dashboard', function () {
+   return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/users/edit', [UserController::class, 'edit'])->name('users.edit');
+
+    Route::post('/users/update', [UserController::class, 'update'])->name('users.update');
 });
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::post('/login', [AuthenticatedSessionController::class, 'store']);
+
+Route::get('/mypage', function () {
+    return view('mypage');
+})->name('mypage');
+
+// ログイン画面
+Route::get('/login', function () {
+    return view('auth.login'); 
+})->middleware('guest')->name('login');
+
+Route::get('/items', [ItemsController::class, 'index'])->name('items.index');
+
+
+Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update');

@@ -17,7 +17,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    public const HOME = '/profile/edit';
+    public const HOME = '/dashboard';
 
     /**
      * The controller namespace for the application.
@@ -33,7 +33,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public function boot(): void
     {
         $this->configureRateLimiting();
 
@@ -46,6 +46,16 @@ class RouteServiceProvider extends ServiceProvider
             Route::middleware('web')
                 ->namespace($this->namespace)
                 ->group(base_path('routes/web.php'));
+        });
+
+        $this->app['router']->get('/home', function () {
+                    
+            if (session('just_registered')) {
+                session()->forget('just_registered');
+                       
+                 return redirect('/users/edit');
+                }
+                return redirect(self::HOME);
         });
     }
 

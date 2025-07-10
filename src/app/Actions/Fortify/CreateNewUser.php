@@ -21,23 +21,16 @@ class CreateNewUser implements CreatesNewUsers
     {
         Validator::make($input, [
             'name' => ['required', 'string', 'max:255'],
-            'email' => [
-                'required',
-                'string',
-                'email',
-                'max:255',
-                Rule::unique(User::class),
-            ],
-            'password' => $this->passwordRules(),
-
-            [
-                'name.required' => 'お名前を入力してください',
-                'email.required' => 'メールアドレスを入力してください',
-                'password.required' => 'パスワードを入力してください',
-                'password.min' => 'パスワードは8文字以上で入力してください',
-                'password.confirmed' => 'パスワードと一致しません',
-            ]
-            
+            'email' => ['required', 'string', 'email', 'max:255', Rule::unique(User::class)],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+        ], [
+            'name.required' => 'ユーザー名を入力してください',
+            'email.required' => 'メールアドレスを入力してください',
+            'email.email' => '有効なメールアドレスを入力してください',
+            'email.unique' => 'このメールアドレスは既に使われています',
+            'password.required' => 'パスワードを入力してください',
+            'password.min' => 'パスワードは8文字以上で入力してください',
+            'password.confirmed' => '確認用パスワードが一致しません',
         ])->validate();
 
         return User::create([
@@ -45,5 +38,10 @@ class CreateNewUser implements CreatesNewUsers
             'email' => $input['email'],
             'password' => Hash::make($input['password']),
         ]);
+
+        session(['just_registered' => true]);
+
+        return $user;
     }
 }
+
