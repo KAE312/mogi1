@@ -25,4 +25,9 @@ class ItemsController extends Controller
     
         return view('items.index', compact('items', 'tab'));
     }
+
+    public function create()
+    {
+    return view('items.create');
+    }
 }

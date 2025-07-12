@@ -59,7 +59,12 @@ Route::get('/login', function () {
     return view('auth.login'); 
 })->middleware('guest')->name('login');
 
+//商品一覧画面
 Route::get('/items', [ItemsController::class, 'index'])->name('items.index');
+
+//商品出品画面
+Route::get('/items/create', [ItemsController::class, 'create'])->name('items.create');
 
 
 Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update');
+
