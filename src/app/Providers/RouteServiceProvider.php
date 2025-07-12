@@ -54,7 +54,7 @@ class RouteServiceProvider extends ServiceProvider
                 session()->forget('just_registered');
                        
                  return redirect('/users/edit');
-                }
+            }
                 return redirect(self::HOME);
         });
     }

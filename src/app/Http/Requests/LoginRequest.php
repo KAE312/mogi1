@@ -33,15 +33,15 @@ class LoginRequest extends FormRequest
     public function messages()
     {
        return [
-        'email.required' => 'メールアドレスを入力してください。',
-        'email.email' => 'メールアドレスの形式で入力してください。',
-        'password.required' => 'パスワードを入力してください',
-        'password.min' => 'パスワードは8文字以上で入力してください。',
+           'email.required' => 'メールアドレスを入力してください。',
+           'email.email' => 'メールアドレスの形式で入力してください。',
+           'password.required' => 'パスワードを入力してください',
+           'password.min' => 'パスワードは8文字以上で入力してください。',
        ];
     }
 
     public function store(LoginRequest $request)
-{
+    {
     $credentials = $request->only('email', 'password');
 
     if (Auth::attempt($credentials, $request->filled('remember'))) {
@@ -54,5 +54,5 @@ class LoginRequest extends FormRequest
     return back()->withErrors([
         'auth' => 'ログイン情報が登録されていません。',
     ]);
-}
+    }
 }

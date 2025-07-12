@@ -22,7 +22,7 @@
                 <label for="password">パスワード</label>
                 <input id="password" type="password" name="password">
                 @error('password')
-                    <div style="color: red;">{{ $message }}</div>
+                <div style="color: red;">{{ $message }}</div>
                 @enderror
             </div>
 

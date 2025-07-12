@@ -29,7 +29,7 @@ class RegisterController extends Controller
 
         Auth::login($user);
 
-        return redirect('/users/edit'); // プロフィール設定画面へ
+        return redirect('/users/edit'); // プロフィール設定画面に行く
     }
 
     /*

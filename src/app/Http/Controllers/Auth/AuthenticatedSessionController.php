@@ -17,7 +17,7 @@ class AuthenticatedSessionController extends Controller
         if (Auth::attempt($credentials, $request->filled('remember'))) {
             $request->session()->regenerate();
 
-            // 登録直後ならプロフィール編集へ
+            // 登録直後ならプロフィール編集に行く
             if (session('just_registered')) {
                 session()->forget('just_registered');
                 return redirect('/users/edit');

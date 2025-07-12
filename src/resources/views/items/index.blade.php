@@ -34,7 +34,7 @@
 
                 {{-- Sold表示 --}}
                 @if ($item->is_sold)
-                    <div class="sold-label">Sold</div>
+                <div class="sold-label">Sold</div>
                 @endif
             </div>
         @empty

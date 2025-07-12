@@ -32,6 +32,7 @@
                     <a href="{{ route('mypage') }}" class="nav-link">マイページ</a>
                     <a href="{{ route('items.index') }}" class="nav-link">出品</a>
                 </div>
+            </div>
         @endif
     </div>
 </header>
@@ -39,5 +40,6 @@
 <main>
     @yield('content') 
  </main>
-</body>
+ </body>
+
 

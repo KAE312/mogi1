@@ -14,12 +14,12 @@ class ItemsController extends Controller
         $userId = Auth::id();
     
         if ($tab === 'mylist') {
-            // マイリスト：ログインしているユーザーのいいねした商品
+            // マイリストは、ログインしているユーザーのいいねした商品
             $items = Auth::check()
                 ? Auth::user()->likedItems()->with('user')->get()
                 : collect(); // 未ログインなら空
         } else {
-            // おすすめ：全商品（自分の商品は除外）
+            // おすすめは、全商品（自分の商品は除外）
             $items = Item::when($userId, fn($q) => $q->where('user_id', '<>', $userId))->get();
         }
     

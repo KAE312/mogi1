@@ -31,7 +31,7 @@ main {
     margin: 0;
 }
 
-/* タブメニュー */
+
 .tab-menu {
     display: flex;
     border-bottom: 1px solid #ccc;
@@ -79,3 +79,56 @@ main {
     color: #333;
     margin-bottom: 10px;
 }
+
+
+
+/* PC幅に合わせて調整（1400px〜1540px） */
+@media screen and (min-width: 1400px) and (max-width: 1540px) {
+    .items-container {
+        padding: 0 80px;
+    }
+
+
+    .item-box {
+    width: 180px;
+    }
+
+    .item-image {
+    width: 180px;
+    height: 180px;
+    font-size: 22px;
+    }
+}
+
+/* タブレット対応（768px〜850px） */
+@media screen and (min-width: 768px) and (max-width: 850px) {
+    .items-container {
+        padding: 0 20px;
+    }
+
+    .item-list {
+    justify-content: center;
+    gap: 20px;
+    }
+
+    .item-box {
+    width: 120px;
+    }
+    
+    .item-image {
+    width: 120px;
+    height: 120px;
+    font-size: 16px;
+    }
+    
+    .tab-menu {
+    flex-wrap: wrap;
+    gap: 10px;
+    }
+    
+    .tab-menu div {
+    margin-right: 10px;
+    }
+}
+
+
