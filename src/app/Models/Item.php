@@ -16,6 +16,7 @@ class Item extends Model
         'description',
         'price',
         'image_path',
+        'condition_name',
         'is_sold',
     ];
 
@@ -52,6 +53,16 @@ class Item extends Model
     public function likedUsers()
     {
         return $this->belongsToMany(User::class, 'likes')->withTimestamps();
+    }
+
+    public function categories()
+    {
+    return $this->belongsToMany(Category::class);
+    }
+
+    public function condition()
+    {
+    return $this->belongsTo(Condition::class);
     }
 }
 

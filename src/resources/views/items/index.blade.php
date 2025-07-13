@@ -20,7 +20,11 @@
             <div class="item-box">
                 {{-- 商品画像 --}}
                 <div class="item-image">
-                    <img src="{{ $item->image_path }}" alt="{{ $item->name }}" width="150" height="150">
+                    @if ($item->image_path)
+                        <img src="{{ asset('storage/' . $item->image_path) }}" alt="商品画像" class="item-image">
+                    @else
+                        <p>画像なし</p>
+                    @endif
                 </div>
 
                 {{-- 商品名 --}}

@@ -1,0 +1,122 @@
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    font-family: sans-serif;
+    padding: 20px;
+}
+
+.title {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 30px;
+}
+
+.section-title {
+    font-weight: bold;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.image-upload-box {
+    border: 1px dashed #ccc;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.image-label {
+    color: #ff6f61;
+    border: 1px solid #ff6f61;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.category-box {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.category-tag {
+    border: 1px solid #ff6f61;
+    color: #ff6f61;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 14px;
+}
+
+.input-select,
+.input-text,
+.input-textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.input-textarea {
+    height: 100px;
+    resize: vertical;
+}
+
+.submit-button {
+    background-color: #ff6f61;
+    color: white;
+    padding: 12px;
+    border: none;
+    width: 100%;
+    margin-top: 30px;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+
+/* PC幅に合わせて調整（1400px〜1540px） */
+@media screen and (min-width: 1400px) and (max-width: 1540px) {
+    .container {
+        max-width: 1200px;
+    }
+
+    .input-text,
+    .input-textarea,
+    .input-select {
+        font-size: 18px;
+        padding: 14px;
+    }
+
+    .submit-button {
+        font-size: 18px;
+        padding: 14px 40px;
+    }
+}
+
+
+/* タブレット対応（768px〜850px） */
+@media screen and (min-width: 768px) and (max-width: 850px) {
+    .container {
+        padding: 20px 15px;
+    }
+
+    .input-text,
+    .input-textarea,
+    .input-select {
+        font-size: 15px;
+        padding: 10px;
+    }
+
+    .submit-button {
+        width: 100%;
+        font-size: 16px;
+        padding: 12px;
+    }
+
+    .form-section {
+        margin-bottom: 20px;
+    }
+}
+
+
+

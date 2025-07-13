@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Item; 
 use Illuminate\Support\Facades\Auth;
+use App\Models\Category;
+use App\Models\Condition;
+use Illuminate\Support\Facades\Auth;
 
 class ItemsController extends Controller
 {
@@ -28,6 +31,49 @@ class ItemsController extends Controller
 
     public function create()
     {
-    return view('items.create');
+        $categories = Category::all(); 
+        $conditions = Condition::all();
+        return view('items.create', compact('categories', 'conditions'));
     }
+
+    public function store(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'brand' => 'nullable|string|max:255',
+            'description' => 'required|string',
+            'price' => 'required|integer|min:0',
+            'condition_name' => 'required|string|max:255',
+            'categories' => 'required|array',
+            'categories.*' => 'exists:categories,id',
+        ]);
+    
+
+        $item = Item::create([
+            'name' => $request->name,
+            'brand' => $request->brand,
+            'description' => $request->description,
+            'price' => $request->price,
+            'condition_name' => $request->condition_name, 
+        ]);
+
+        $item->categories()->sync($request->categories);
+
+        return redirect()->route('items.create')->with('success', '商品を出品しました');
+    }
+
+    public function show($id)
+    {
+        $item = Item::with(['categories', 'comments.user'])->findOrFail($id);
+
+        if (Auth::check()) {
+            $user = Auth::user();
+
+            // ユーザー情報を渡す
+            return view('items.show', compact('item', 'user'));
+        } else {
+            // 未ログインの人には商品情報だけ渡す
+            return view('items.show', compact('item'));
+        }
+    } 
 }

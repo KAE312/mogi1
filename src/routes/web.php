@@ -65,6 +65,11 @@ Route::get('/items', [ItemsController::class, 'index'])->name('items.index');
 //商品出品画面
 Route::get('/items/create', [ItemsController::class, 'create'])->name('items.create');
 
+Route::post('/items', [ItemsController::class, 'store'])->name('items.store');
+
+//商品詳細画面
+Route::get('/item/{item}', [ItemsController::class, 'show'])->name('items.show');
+
 
 Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update');
 
