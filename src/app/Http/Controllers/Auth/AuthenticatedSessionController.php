@@ -11,13 +11,13 @@ class AuthenticatedSessionController extends Controller
 {
     public function store(LoginRequest $request)
     {
-        // バリデーション済みのデータ取得
+        
         $credentials = $request->only('email', 'password');
 
         if (Auth::attempt($credentials, $request->filled('remember'))) {
             $request->session()->regenerate();
 
-            // 登録直後ならプロフィール編集に行く
+            // 登録直後はプロフィール編集に行く
             if (session('just_registered')) {
                 session()->forget('just_registered');
                 return redirect('/users/edit');

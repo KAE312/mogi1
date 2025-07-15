@@ -7,7 +7,6 @@ use App\Models\Item;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Category;
 use App\Models\Condition;
-use Illuminate\Support\Facades\Auth;
 
 class ItemsController extends Controller
 {
