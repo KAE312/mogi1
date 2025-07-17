@@ -10,7 +10,7 @@
 
     <form method="POST" action="{{ route('profile.update') }}" enctype="multipart/form-data">
         @csrf
-        @method('POST')
+        @method('PUT')
 
         <div class="profile-image-wrapper">
             <div class="image-circle">

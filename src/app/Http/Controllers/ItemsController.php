@@ -7,6 +7,7 @@ use App\Models\Item;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Category;
 use App\Models\Condition;
+use App\Http\Requests\ExhibitionRequest;
 
 class ItemsController extends Controller
 {
@@ -22,7 +23,7 @@ class ItemsController extends Controller
                 : collect(); // 未ログインなら空
         } else {
             // おすすめは、全商品（自分の商品は除外）
-            $items = Item::when($userId, fn($q) => $q->where('user_id', '<>', $userId))->get();
+            $items = Item::where($userId, fn($q) => $q->where('user_id', '<>', $userId))->get();
         }
     
         return view('items.index', compact('items', 'tab'));
@@ -35,19 +36,8 @@ class ItemsController extends Controller
         return view('items.create', compact('categories', 'conditions'));
     }
 
-    public function store(Request $request)
+    public function store(ExhibitionRequest $request)
     {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'brand' => 'nullable|string|max:255',
-            'description' => 'required|string',
-            'price' => 'required|integer|min:0',
-            'condition_name' => 'required|string|max:255',
-            'categories' => 'required|array',
-            'categories.*' => 'exists:categories,id',
-        ]);
-    
-
         $item = Item::create([
             'name' => $request->name,
             'brand' => $request->brand,

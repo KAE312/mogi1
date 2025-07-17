@@ -57,12 +57,12 @@ class Item extends Model
 
     public function categories()
     {
-    return $this->belongsToMany(Category::class);
+        return $this->belongsToMany(Category::class);
     }
 
     public function condition()
     {
-    return $this->belongsTo(Condition::class);
+        return $this->belongsTo(Condition::class);
     }
 }
 

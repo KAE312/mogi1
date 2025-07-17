@@ -118,5 +118,27 @@
     }
 }
 
+/* カテゴリー */
+.category-checkbox {
+    display: inline-block;
+    cursor: pointer;
+}
 
+.category-checkbox input[type="checkbox"] {
+    display: none;
+}
 
+.category-checkbox span {
+    display: inline-block;
+    border: 1px solid #ff6f61;
+    color: #ff6f61;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 14px;
+    transition: all 0.2s ease-in-out;
+}
+
+.category-checkbox input[type="checkbox"]:checked+span {
+    background-color: #ff6f61;
+    color: white;
+}
