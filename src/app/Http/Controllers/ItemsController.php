@@ -39,11 +39,12 @@ class ItemsController extends Controller
     public function store(ExhibitionRequest $request)
     {
         $item = Item::create([
+            'user_id' => Auth::id(),
             'name' => $request->name,
             'brand' => $request->brand,
             'description' => $request->description,
             'price' => $request->price,
-            'condition_name' => $request->condition_name, 
+            'condition_id' => $request->condition_id, 
         ]);
 
         $item->categories()->sync($request->categories);
@@ -53,6 +54,7 @@ class ItemsController extends Controller
 
     public function show($id)
     {
+        //複数カテゴリーの表示
         $item = Item::with(['categories', 'comments.user'])->findOrFail($id);
         $favoriteCount = $item->favorites()->count();
         $commentCount = $item->comments()->count();
@@ -62,7 +64,7 @@ class ItemsController extends Controller
             'favorite_count' => $favoriteCount,
             'comment_count' => $commentCount,
         ];
-
+        //未ログインユーザーの表示
         if (Auth::check()) {
             $user = Auth::user();
            

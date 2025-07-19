@@ -47,9 +47,9 @@
             こんにちは、{{ $user->name }}さん
         </p>
     @endif
-    
+
     @yield('content') 
- </main>
+</main>
  </body>
 
 

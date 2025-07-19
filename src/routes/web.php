@@ -71,7 +71,13 @@ Route::post('/items', [ItemsController::class, 'store'])->name('items.store');
 //商品詳細画面
 Route::get('/item/{item}', [ItemsController::class, 'show'])->name('items.show');
 
-Route::post('/profile', [ProfileController::class, 'update'])->name('profile.update');
+Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update');
 
 //商品購入画面
 Route::get('/purchase/{item}', [PurchaseController::class, 'index'])->name('purchase.index');
+
+//商品詳細画面のいいね
+Route::middleware('auth')->group(function () {
+    Route::post('/items/{item}/favorite', [FavoriteController::class, 'store'])->name('favorite.store');
+    Route::delete('/items/{item}/favorite', [FavoriteController::class, 'destroy'])->name('favorite.destroy');
+});

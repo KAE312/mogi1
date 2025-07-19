@@ -32,19 +32,18 @@ class ExhibitionRequest extends FormRequest
             'categories' => 'required|array',
             'categories.*' => 'exists:categories,id',
         ];
+    }
 
-        public function messages(): array
-        {
-            return [
-                'name.required' => '商品名は必須です。',
-                'description.required' => '商品の説明は必須です。',
-                'price.required' => '価格は必須です。',
-                'condition_name.required' => '商品の状態は必須です。',
-                'categories.required' => 'カテゴリーを1つ以上選択してください。',
-                'categories.*.exists' => '選択されたカテゴリーが存在しません。',
-            ];
-
-
-        }
+    public function messages(): array
+    {
+        return [
+            'name.required' => '商品名は必須です。',
+            'description.required' => '商品の説明は必須です。',
+            'price.required' => '価格は必須です。',
+            'condition_name.required' => '商品の状態は必須です。',
+            'categories.required' => 'カテゴリーを1つ以上選択してください。',
+            'categories.*.exists' => '選択されたカテゴリーが存在しません。',
+        ];
     }
 }
+

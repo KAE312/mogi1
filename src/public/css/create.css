@@ -121,24 +121,43 @@
 /* カテゴリー */
 .category-checkbox {
     display: inline-block;
+    border: 2px solid #ff5e57;
+    border-radius: 20px;
+    padding: 5px 15px;
+    color: #ff5e57;
+    font-size: 14px;
+    margin: 5px;
     cursor: pointer;
+    transition: 0.3s;
+    position: relative;
+    user-select: none;
 }
 
 .category-checkbox input[type="checkbox"] {
     display: none;
 }
 
-.category-checkbox span {
-    display: inline-block;
-    border: 1px solid #ff6f61;
-    color: #ff6f61;
-    padding: 6px 12px;
-    border-radius: 20px;
-    font-size: 14px;
-    transition: all 0.2s ease-in-out;
+.category-checkbox input[type="checkbox"]:checked+* {
+    background-color: #ff5e57;
+    color: white;
+    border-color: #ff5e57;
 }
 
 .category-checkbox input[type="checkbox"]:checked+span {
-    background-color: #ff6f61;
+    background-color: #ff5e57;
     color: white;
+    border-color: #ff5e57;
+}
+
+.form-group {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 1px;
+}
+
+.category-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 7px;
 }

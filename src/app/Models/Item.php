@@ -33,8 +33,14 @@ class Item extends Model
     public function favorites()
     {
         return $this->hasMany(Favorite::class);
+        return $this->belongsToMany(User::class, 'favorites')->withTimestamps();
     }
 
+    public function isFavoritedBy($user)
+    {
+        return $this->favorites()->where('user_id', $user->id)->exists();
+    }
+    
     public function purchases()
     {
         return $this->hasMany(Purchase::class);
@@ -63,6 +69,11 @@ class Item extends Model
     public function condition()
     {
         return $this->belongsTo(Condition::class);
+    }
+
+    public function favoritedByUsers()
+    {
+        return $this->belongsToMany(User::class, 'favorites')->withTimestamps();
     }
 }
 

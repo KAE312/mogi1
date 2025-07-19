@@ -11,32 +11,37 @@
                 <p>商品画像がありません</p>
             @endif
         </div>
-
+    {{-- 商品名・ブランド名・価格 --}}
     <div class="item-show-right">
         <h2 class="item-title">{{$item->name }}</h2>
         <p class="brand-name">{{ $item->brand_name ?? 'ブランド名なし' }}</p>
         <p class="item-price">¥{{ number_format($item->price) }} <span class="tax-in">(税込)</span></p>
-
+        {{-- いいね数・コメント数 --}}
         <div class="favorite-box">
-            <span>☆</span>
-            <span class="favorite-count">{{ $favorite_count ?? 0 }}</span>
+            <button 
+            id="favorite-button" 
+            data-liked="{{ $item->isFavoritedBy(auth()->user()) ? 'true' : 'false' }}" 
+            data-item-id="{{ $item->id }}">
+                <span id="favorite-icon" style="color: {{ $item->isFavoritedBy(auth()->user()) ? 'red' : 'gray' }}">☆</span>
+                <span id="favorite-count">{{ $favorite_count }}</span>
+            </button>
             <span>💬</span>
             <span class="comment-count">{{ $comment_count ?? 0 }}</span>
         </div>
 
         <button class="buy-button">購入手続きへ</button>
-
+        {{-- 商品説明 --}}
         <div class="item-description">
             <h3>商品説明</h3>
             <p>カラー：{{ $item->color ?? '未設定' }}</p>
             <p>{!! nl2br(e($item->condition ?? '商品の状態は未設定です。')) !!}</p>
             <p>購入後、即発送いたします。</p>
         </div>
-
+        {{-- カテゴリ・商品の状態 --}}
         <div class="item-info">
             <h3>商品の情報</h3>
             <p>カテゴリー
-            @foreach($item->categories ?? [] as $category)
+                @foreach($item->categories ?? [] as $category)
                     <span class="tag">{{ $category->name }}</span>
                 @endforeach
             </p>

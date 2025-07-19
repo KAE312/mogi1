@@ -15,7 +15,7 @@ class AddAddressToUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->string('postcode')->nullable();
-            $table->string('address')->nullable();
+            //$table->string('address')->nullable();
         });
     }
 
