@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-< class="item-show-container">
-    < class="item-show-left">
+<div class="item-show-container">
+    <div class="item-show-left">
         <div class="item-image-box">
            {{-- 商品画像を表示 --}}
            @if($item->image_path)
@@ -19,9 +19,9 @@
 
         <div class="favorite-box">
             <span>☆</span>
-            <span class="favorite-count">{{ $item->favorite_count ?? 0 }}</span>
+            <span class="favorite-count">{{ $favorite_count ?? 0 }}</span>
             <span>💬</span>
-            <span class="comment-count">{{ $item->comment_count ?? 0 }}</span>
+            <span class="comment-count">{{ $comment_count ?? 0 }}</span>
         </div>
 
         <button class="buy-button">購入手続きへ</button>
@@ -45,6 +45,7 @@
 
         <div class="comment-section">
             <h3>コメント ({{ $item->comments->count() ?? 0 }})</h3>
+            @forelse($item->comments as $comment)
             <div class="comment">
                 <div class="avatar"></div>
                 <div class="comment-body">
@@ -52,6 +53,9 @@
                     <p class="comment-text">{{ $comment->content }}</p>
                 </div>
             </div>
+            @empty
+            <p>まだコメントはありません。</p>
+            @endforelse
         </div>
 
         <div class="comment-form">

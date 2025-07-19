@@ -54,15 +54,30 @@ class ItemsController extends Controller
     public function show($id)
     {
         $item = Item::with(['categories', 'comments.user'])->findOrFail($id);
+        $favoriteCount = $item->favorites()->count();
+        $commentCount = $item->comments()->count();
+    
+        $data = [
+            'item' => $item,
+            'favorite_count' => $favoriteCount,
+            'comment_count' => $commentCount,
+        ];
 
         if (Auth::check()) {
             $user = Auth::user();
-
-            // ユーザー情報を渡す
-            return view('items.show', compact('item', 'user'));
+           
+            return view('items.show', [
+                'item' => $item,
+                'favorite_count' => $favoriteCount,
+                'comment_count' => $commentCount,
+                'user' => $user,
+            ]);
         } else {
-            // 未ログインの人には商品情報だけ渡す
-            return view('items.show', compact('item'));
-        }
-    } 
+            return view('items.show', [
+                'item' => $item,
+                'favorite_count' => $favoriteCount,
+                'comment_count' => $commentCount,
+            ]);
+        } 
+    }
 }

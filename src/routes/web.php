@@ -71,6 +71,7 @@ Route::post('/items', [ItemsController::class, 'store'])->name('items.store');
 //商品詳細画面
 Route::get('/item/{item}', [ItemsController::class, 'show'])->name('items.show');
 
-
 Route::post('/profile', [ProfileController::class, 'update'])->name('profile.update');
 
+//商品購入画面
+Route::get('/purchase/{item}', [PurchaseController::class, 'index'])->name('purchase.index');

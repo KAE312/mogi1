@@ -42,6 +42,12 @@
 </header>
 
 <main>
+    @if (isset($user))
+        <p class="greeting" style="margin: 1rem; font-weight: bold;">
+            こんにちは、{{ $user->name }}さん
+        </p>
+    @endif
+    
     @yield('content') 
  </main>
  </body>
