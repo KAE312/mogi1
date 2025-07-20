@@ -39,14 +39,16 @@ Auth::routes(['verify' => true]);
 
 // 認証必須の画面
 Route::get('/dashboard', function () {
-   return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+    return view('dashboard');
+})->middleware('auth')->name('dashboard');
 
-Route::middleware(['auth'])->group(function () {
-    Route::get('/users/edit', [UserController::class, 'edit'])->name('users.edit');
+Route::get('/users/edit', [UserController::class, 'edit'])
+    ->middleware('auth')
+    ->name('users.edit');
 
-    Route::post('/users/update', [UserController::class, 'update'])->name('users.update');
-});
+Route::post('/users/update', [UserController::class, 'update'])
+    ->middleware('auth')
+    ->name('users.update');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
@@ -65,10 +67,13 @@ Route::get('/login', function () {
 Route::get('/items', [ItemsController::class, 'index'])->name('items.index');
 
 //商品出品画面
-Route::middleware('auth')->group(function () {
-Route::get('/items/create', [ItemsController::class, 'create'])->name('items.create');
-Route::post('/items', [ItemsController::class, 'store'])->name('items.store');
-});
+Route::get('/items/create', [ItemsController::class, 'create'])
+    ->middleware('auth')
+    ->name('items.create');
+
+Route::post('/items', [ItemsController::class, 'store'])
+    ->middleware('auth')
+    ->name('items.store');
 
 //商品詳細画面
 Route::get('/item/{item}', [ItemsController::class, 'show'])->name('items.show');
@@ -76,15 +81,16 @@ Route::get('/item/{item}', [ItemsController::class, 'show'])->name('items.show')
 Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update');
 
 //商品詳細画面のいいね
-Route::middleware('auth')->group(function () {
-    Route::post('/items/{item}/favorite', [FavoriteController::class, 'store'])->name('favorite.store');
-    Route::delete('/items/{item}/favorite', [FavoriteController::class, 'destroy'])->name('favorite.destroy');
-});
+Route::post('/items/{item}/favorite', [FavoriteController::class, 'store'])
+    ->middleware('auth')
+    ->name('favorite.store');
+
+Route::delete('/items/{item}/favorite', [FavoriteController::class, 'destroy'])
+    ->middleware('auth')
+    ->name('favorite.destroy');
 
 //コメント送信機能
-Route::middleware(['auth'])->group(function () {
-    Route::post('/items/{item}/comments', [CommentController::class, 'store'])->name('comments.store');
-});
+Route::post('/items/{item}/comments', [CommentController::class, 'store'])->middleware('auth')->name('comments.store');
 
 //商品購入画面
 Route::get('/items/{item}/purchase', [PurchaseController::class, 'show'])->name('purchase.show');

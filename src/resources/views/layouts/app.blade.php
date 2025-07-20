@@ -7,8 +7,6 @@
     
     <link rel="stylesheet" href="{{ asset('css/register.css') }}">
 
-    <link rel="stylesheet" href="{{ asset('css/login.css') }}">
-
     <link rel="stylesheet" href="{{ asset('css/items.css') }}">
 
     <link rel="stylesheet" href="{{ asset('css/create.css') }}">
