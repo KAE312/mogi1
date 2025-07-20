@@ -7,6 +7,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\ItemsController;
+use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\CommentController;
 
 

@@ -3,7 +3,6 @@ body {
     margin: 0;
     padding: 0;
     font-family: sans-serif;
-    /*追加*/
     display: flex;
     justify-content: center;
     align-items: center;
@@ -22,7 +21,6 @@ body {
     padding: 40px;
     background-color: #fff;
     text-align: left;
-    /*追加*/
     border-radius: 10px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
@@ -65,7 +63,6 @@ button[type="submit"] {
     border-radius: 4px;
     cursor: pointer;
     font-weight: bold;
-    /*追加*/
     margin-top: 10px;
     text-align: center;
 }

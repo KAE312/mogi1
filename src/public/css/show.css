@@ -133,3 +133,82 @@
     border: none;
     cursor: pointer;
 }
+
+/* PC幅に合わせて調整（1400px〜1540px） */
+@media screen and (min-width: 1400px) and (max-width: 1540px) {
+    .item-show-container {
+        max-width: 1300px;
+        padding: 50px;
+    }
+
+    .item-image-box {
+        height: 550px;
+        font-size: 22px;
+    }
+
+    .item-title {
+        font-size: 26px;
+    }
+
+    .brand-name,
+    .tax-in {
+        font-size: 16px;
+    }
+
+    .item-price {
+        font-size: 28px;
+    }
+
+    .buy-button {
+        font-size: 18px;
+        padding: 14px 50px;
+    }
+
+    .item-description h3,
+    .item-info h3,
+    .comment-section h3 {
+        font-size: 20px;
+    }
+
+    .tag {
+        font-size: 14px;
+        padding: 4px 12px;
+    }
+
+    .username,
+    .comment-text {
+        font-size: 16px;
+    }
+
+    .comment-form h4 {
+        font-size: 18px;
+    }
+
+    .comment-form textarea {
+        font-size: 16px;
+        padding: 12px;
+    }
+
+    .send-comment {
+        font-size: 16px;
+        padding: 12px 36px;
+    }
+}
+
+
+/* タブレット対応（768px〜850px） */
+@media (max-width: 850px) and (min-width: 768px) {
+    .item-show-container {
+        flex-direction: column;
+        padding: 30px 20px;
+    }
+
+    .item-image-box img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .item-show-right {
+        margin-top: 30px;
+    }
+}
