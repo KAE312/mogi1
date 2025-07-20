@@ -68,6 +68,9 @@
             <form method="POST" action="{{ route('comments.store', $item->id) }}">
                 @csrf
                 <textarea name="comment" rows="4">{{ old('comment') }}</textarea>
+                @if ($errors->has('comment'))
+                <p class="error">{{ $errors->first('comment') }}</p>
+                @endif
                 <button type="submit" class="send-comment">コメントを送信する</button>
             </form>
         </div>

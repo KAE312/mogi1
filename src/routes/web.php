@@ -7,6 +7,8 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\ItemsController;
+use App\Http\Controllers\CommentController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -73,11 +75,20 @@ Route::get('/item/{item}', [ItemsController::class, 'show'])->name('items.show')
 
 Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update');
 
-//商品購入画面
-Route::get('/purchase/{item}', [PurchaseController::class, 'index'])->name('purchase.index');
-
 //商品詳細画面のいいね
 Route::middleware('auth')->group(function () {
     Route::post('/items/{item}/favorite', [FavoriteController::class, 'store'])->name('favorite.store');
     Route::delete('/items/{item}/favorite', [FavoriteController::class, 'destroy'])->name('favorite.destroy');
 });
+
+//コメント送信機能
+Route::middleware(['auth'])->group(function () {
+    Route::post('/items/{item}/comments', [CommentController::class, 'store'])->name('comments.store');
+});
+
+//商品購入画面
+Route::get('/items/{item}/purchase', [PurchaseController::class, 'show'])->name('purchase.show');
+Route::post('/items/{item}/purchase', [PurchaseController::class, 'store'])->name('purchase.store');
+
+//配送先変更
+Route::get('/address/edit', [AddressController::class, 'edit'])->name('address.edit'); 
