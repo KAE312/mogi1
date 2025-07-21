@@ -24,7 +24,16 @@ class PurchaseController extends Controller
 
     public function store(PurchaseRequest $request, Item $item)
     {
-        return redirect()->route('purchase.complete');
+        //すでに売られている場合
+        if ($item->is_sold) {
+            return redirect()->back()->with('error', 'この商品は既に購入されています。');
+        }
+
+        $item->buyer_id = Auth::id();
+        $item->is_sold = true;
+        $item->save();
+    
+        return redirect()->route('purchase.complete');->with('success', '購入が完了しました。');
     }
 }
 

@@ -79,6 +79,14 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->belongsToMany(Item::class, 'favorites')->withTimestamps();
     }
 
+    public function purchased()
+{
+    $user = auth()->user();
+    $purchasedItems = Item::where('buyer_id', $user->id)->get();
+
+    return view('users.purchased', compact('purchasedItems'));
+}
+
 
 }
 

@@ -96,6 +96,7 @@ Route::post('/items/{item}/comments', [CommentController::class, 'store'])->midd
 //商品購入画面
 Route::get('/items/{item}/purchase', [PurchaseController::class, 'show'])->name('purchase.show');
 Route::post('/items/{item}/purchase', [PurchaseController::class, 'store'])->name('purchase.store');
+Route::get('/mypage/purchased', [App\Http\Controllers\UserController::class, 'purchased'])->middleware('auth')->name('mypage.purchased');
 
 //配送先変更
 Route::get('/address/edit', [AddressController::class, 'edit'])->name('address.edit'); 
