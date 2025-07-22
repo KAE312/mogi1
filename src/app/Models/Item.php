@@ -51,11 +51,6 @@ class Item extends Model
         return $this->hasMany(Image::class);
     }
 
-    public function reviews()
-    {
-        return $this->hasMany(Review::class);
-    }
-
     public function likedUsers()
     {
         return $this->belongsToMany(User::class, 'likes')->withTimestamps();

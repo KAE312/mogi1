@@ -43,50 +43,35 @@ class User extends Authenticatable implements MustVerifyEmail
     ];
 
 //リレーション
+    //出品した商品
     public function items()
     {
         return $this->hasMany(Item::class);
     }
-
+    //購入した記録
     public function purchases()
     {
         return $this->hasMany(Purchase::class);
     }
-
+    //住所
     public function address()
     {
         return $this->hasOne(Address::class);
     }
-
+    //いいね
     public function favorites()
     {
         return $this->hasMany(Favorite::class);
         return $this->belongsToMany(Item::class, 'favorites')->withTimestamps();
     }
-
-    public function reviews()
-    {
-        return $this->hasMany(Review::class);
-    }
-
+    //いいねリスト
     public function likedItems()
     {
         return $this->belongsToMany(Item::class, 'favorites')->withTimestamps();
     }
 
-    public function favoriteItems()
-    {
-        return $this->belongsToMany(Item::class, 'favorites')->withTimestamps();
-    }
-
-    public function purchased()
-{
-    $user = auth()->user();
-    $purchasedItems = Item::where('buyer_id', $user->id)->get();
-
-    return view('users.purchased', compact('purchasedItems'));
-}
-
-
+   // public function favoriteItems()
+    //{
+     //   return $this->belongsToMany(Item::class, 'favorites')->withTimestamps();
 }
 

@@ -33,6 +33,7 @@ coachtech フリマアプリ
 
 
 ## ER図
+![ER図](docs/er_diagram.png)
 
 ## URL 
 http://localhost/
