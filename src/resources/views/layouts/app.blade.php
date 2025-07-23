@@ -12,6 +12,8 @@
     <link rel="stylesheet" href="{{ asset('css/create.css') }}">
 
     <link rel="stylesheet" href="{{ asset('css/item-show.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('css/purchase/address.css') }}">
     @yield('styles')
 </head>
 <body>

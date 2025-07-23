@@ -27,10 +27,13 @@
                 @enderror
             </div>
 
-            <div class="section">
-                <strong>配送先</strong> <a href="{{ route('address.edit') }}" style="color:#0080ff;">変更する</a><br>
-                <p>〒 {{ $user->postal_code ?? 'XXX-YYYY' }}<br>
-                {{ $user->address ?? 'ここには住所と建物が入ります' }}</p>
+            <div class="section address-display">
+                <strong class="section-title">配送先</strong>
+                <a href="{{ route('purchase.address') }}" class="address-edit-button">変更する</a><br>
+                <p class="address-text">
+                〒 {{ $user->postal_code }}<br>
+                {{ $user->address }}
+                </p>
             </div>
 
             <button type="submit" class="btn-purchase">購入する</button>

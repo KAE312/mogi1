@@ -100,3 +100,7 @@ Route::get('/mypage/purchased', [App\Http\Controllers\UserController::class, 'pu
 
 //配送先変更
 Route::get('/address/edit', [AddressController::class, 'edit'])->name('address.edit'); 
+
+//住所変更画面
+Route::get('/purchase/address', [PurchaseController::class, 'editAddress'])->name('purchase.address')->middleware('auth');
+Route::put('/purchase/address', [PurchaseController::class, 'updateAddress'])->name('purchase.address.update')->middleware('auth');
